@@ -15,6 +15,14 @@ class App extends Component {
     headline: "Click an Image to Begin"
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.score !== prevState.score) {
+      this.setState(() => ({
+        topScore: this.state.score > prevState.topScore ? this.state.score : prevState.topScore
+      }));
+    }
+  }
+
   shuffle = a => {
     var j, x, i;
     for (i = a.length - 1; i > 0; i--) {
@@ -26,6 +34,7 @@ class App extends Component {
     return a;
 }
   clicky = (id) => {
+    console.log(this.state.playersGuessed);
     if (this.state.playersGuessed.indexOf(id) === -1) {
       this.setState (prevState => ({
         score: prevState.score + 1,
@@ -36,15 +45,11 @@ class App extends Component {
     }
     else {
       this.setState ({
+        topScore: this.state.score > this.state.topScore ? this.state.score : this.state.topScore,
         score: 0,
         playersGuessed: [],
         headline: "You Guessed Incorrectly!"
       })
-    }
-    if (this.state.score >= this.state.topScore) {
-      this.setState (prevState => ({
-        topScore: (prevState.score)
-      }))
     }
   }
   
