@@ -1,0 +1,20 @@
+.container {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.jumbotron {
+  margin-bottom: 25px;
+  padding: 5px;
+  padding-top: 50px;
+  border-bottom: 2px solid black;
+}
+
+h1 {
+  color: dodgerblue
+}
+
+.lead {
+  font-size: 1.25em;
+  font-weight: bold
+}
